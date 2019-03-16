@@ -54,7 +54,7 @@ void my_sent_message(const isotp_send_handle *handle)
 
 int main(int argc, char *argv[])
 {
-    isotp_start("can0");
+    isotp_start("vcan0");
 
     printf("BEGIN!\n");
     /* RECEIVE INIT */
@@ -79,8 +79,8 @@ int main(int argc, char *argv[])
     send_handle.message_size = 19;
     send_handle.payload = data1;
     send_handle.receive_timeout_ms = 0x7F;
-    send_handle.send_id = 0x9;
-    send_handle.receive_id = 0x2;
+    send_handle.send_id = 0x8;
+    send_handle.receive_id = 0x1;
     send_handle.message_sent_callback = my_sent_message;
 
     isotp_send(&send_handle);
@@ -90,6 +90,6 @@ int main(int argc, char *argv[])
     while(true); /* Working... */
 
     isotp_finish();
-    
+
     return 0;
 }
